@@ -52,4 +52,5 @@ pandas
 ```
 pip install pandas 
 ```
- 
+pagina crear favicon.ico
+https://favicon.io/
