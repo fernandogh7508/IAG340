@@ -27,6 +27,11 @@ Set-ExecutionPolicy Unrestricted
 ```
 indicamos S y enter
 
+desactivar entorno
+```
+ deactivate
+```
+
 ## Estructura del proyecto
 ahorro_solar
     -api

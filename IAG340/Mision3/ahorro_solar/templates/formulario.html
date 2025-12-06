@@ -1,27 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Predición de ahorro</title>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
-    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='favicon.ico')}}">
-</head>
-<body>
-    <h2>Ingrese los datos del hogar</h2>
-    <form action="/predecir" method="post">
-        <select name="ubicacion" id="">
-            <option value="zona_1">Zona 1</option>
-            <option value="zona_2">Zona 2</option>
-            <option value="zona_3">Zona 3</option>
-        </select>
-        <label>Tamaño del Hogar</label>
-        <input type="number" name="tamano_hogar">
-        <label>Costo de instalación</label>
-        <input type="number" name="costo_instalacion">
-        <label>Energía generada</label>
-        <input type="number" name="energia_generada">
-        <input type="submit" value="Predecir ahorro">
-    </form>  
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Predicción de Ahorro - Ahorro Solar{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-light text-center py-5 mb-5">
+    <div class="container">
+        <h1 class="display-4">Calcula tu Ahorro Solar</h1>
+        <p class="lead text-muted">Descubre cuánto puedes ahorrar instalando paneles solares en tu hogar.</p>
+        <a href="#formulario" class="btn btn-primary btn-lg">Comenzar Ahora</a>
+    </div>
+</section>
+
+<!-- Cards Section -->
+<section class="container mb-5">
+    <div class="row g-4">
+
+        <div class="card" style="width: 18rem;">
+  <img src="../static/image/cart1.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">Contribuye al medio ambiente reduciendo tu huella de carbono con energía
+                        renovable.</p>
+  </div>
+</div>
+
+
+
+        
+        <div class="col-md-4">
+            <div class="card h-100 text-center shadow-sm">
+                 <img src="../static/image/cart1.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Ahorro Garantizado</h5>
+                    <p class="card-text">Reduce significativamente tu factura de electricidad desde el primer mes.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 text-center shadow-sm">
+                 <img src="../static/image/card2.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Inversión Inteligente</h5>
+                    <p class="card-text">Aumenta el valor de tu propiedad y recupera tu inversión a largo plazo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Form Section -->
+<section id="formulario" class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Ingrese los datos del hogar</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/predecir" method="post">
+                        <div class="mb-3">
+                            <label for="ubicacion" class="form-label">Ubicación</label>
+                            <select name="ubicacion" id="ubicacion" class="form-select" required>
+                                <option value="" selected disabled>Seleccione una zona</option>
+                                <option value="zona_1">Zona 1</option>
+                                <option value="zona_2">Zona 2</option>
+                                <option value="zona_3">Zona 3</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tamano_hogar" class="form-label">Tamaño del Hogar (m²)</label>
+                            <input type="number" class="form-control" name="tamano_hogar" id="tamano_hogar"
+                                placeholder="Ej: 120" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="costo_instalacion" class="form-label">Costo de instalación ($)</label>
+                            <input type="number" class="form-control" name="costo_instalacion" id="costo_instalacion"
+                                placeholder="Ej: 5000000" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="energia_generada" class="form-label">Energía generada (kWh)</label>
+                            <input type="number" class="form-control" name="energia_generada" id="energia_generada"
+                                placeholder="Ej: 350" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg">Predecir ahorro</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
